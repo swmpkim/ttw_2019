@@ -28,7 +28,7 @@ Download the free Desktop version from [RStudio](https://www.rstudio.com/product
 
 ### 3.  R Packages  
 
-There are two `.r` files you need to download by right-clicking below. Once they're saved on your computer, open each in RStudio (first open RStudio, then from the toolbar select `open script` and navigate to it).
+There are two `.r` files you need to download by right-clicking below. Once they're saved on your computer, open each in RStudio (first open RStudio, then from the toolbar select `file --> open file` and navigate to it).
 
 The first one to run is:  `00a_package_installation.R`: right click [here](https://github.com/swmpkim/ttw_2019/blob/master/00a_package_installation.R) to download  
 
