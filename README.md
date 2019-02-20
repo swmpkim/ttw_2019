@@ -34,7 +34,7 @@ There are two `.r` files you need to download by right-clicking below. Once they
 
 The first one to run is: `00a_package_installation.R`: right click [here](https://github.com/swmpkim/ttw_2019/blob/master/00a_package_installation.R) to download
 
-After that has finished, run `00b_package_check.R` to make sure all packages installed properly; : right click [here](https://github.com/swmpkim/ttw_2019/blob/master/00b_package_check.R) to download
+After that has finished, run `00b_package_check.R` to make sure all packages installed properly; right click [here](https://github.com/swmpkim/ttw_2019/blob/master/00b_package_check.R) to download
 
 Reserve-specific data
 ---------------------
