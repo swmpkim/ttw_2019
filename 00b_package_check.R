@@ -39,6 +39,7 @@ pkgs_missing_index <- which(!(pkgs_needed %in% pkgs_installed))
 pkgs_missing <- pkgs_needed[pkgs_missing_index]
 
 
+# print the results of this check to the console
 if(length(pkgs_missing) == 0){
         print("All required packages are installed!")
 } else{ print("You need to install the following packages:"); cat(pkgs_missing, sep="\n") }
