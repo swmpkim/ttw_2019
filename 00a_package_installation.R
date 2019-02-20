@@ -16,9 +16,3 @@ install.packages(c(pkg_data_wrangle, pkg_analysis, pkg_map, pkg_reporting, pkg_s
 ## phantomjs is required to make the grayscale reserve level maps
 library(webshot)
 install_phantomjs()
- 
-# Install/load "installr" package:
-#if(!require(installr)) { install.packages("installr", repos = "http://cran.us.r-project.org"); require(installr)} #load / install+load installr
-
-# Install pandoc:
-#install.pandoc()
