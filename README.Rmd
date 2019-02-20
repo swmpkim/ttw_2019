@@ -28,7 +28,7 @@ Download the free Desktop version from [RStudio](https://www.rstudio.com/product
 
 ## Some zip file of instructional scripts etc.  
 
-host on Kim's google drive?
+flash drives
 
 ### Packages  
 
