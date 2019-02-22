@@ -1,3 +1,13 @@
+################ INSTRUCTIONS ##################################
+### Use Ctrl+A (Windows) / Cmd+A (Mac)   to select this entire script
+### Then Ctrl+Enter / Cmd+Enter  to run it
+
+### After this completes, run the script '00b_package_check.R'
+### to make sure everything installed properly
+################################################################
+
+
+
 # packages to install for SWMP Status Report workflow
 # modified by Kim Cressman from status report script 00_initial_installation.R
 

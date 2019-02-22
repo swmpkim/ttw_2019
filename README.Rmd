@@ -30,9 +30,9 @@ Download the free Desktop version from [RStudio](https://www.rstudio.com/product
 
 There are two `.r` files you need to download by right-clicking below. Once they're saved on your computer, open each in RStudio (first open RStudio, then from the toolbar select `file --> open file` and navigate to it).
 
-The first one to run is:  `00a_package_installation.R`: right click [here](https://github.com/swmpkim/ttw_2019/blob/master/00a_package_installation.R) to download  
+The first one to run is:  `00a_package_installation.R`:  [click here](https://github.com/swmpkim/ttw_2019/blob/master/00a_package_installation.R); copy and paste that script into RStudio, and follow the instructions at the top.  
 
-After that has finished, run `00b_package_check.R` to make sure all packages installed properly; right click [here](https://github.com/swmpkim/ttw_2019/blob/master/00b_package_check.R) to download  
+After that has finished, run `00b_package_check.R` to make sure all packages installed properly;  [click here](https://github.com/swmpkim/ttw_2019/blob/master/00b_package_check.R); copy and paste that script into RStudio, and follow the instructions at the top.  
 
 ## Reserve-specific data  
 
