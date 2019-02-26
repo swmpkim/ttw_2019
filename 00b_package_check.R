@@ -21,10 +21,12 @@ pkg_analysis <- c('EnvStats', 'ggplot2', 'ggthemes', 'scales', 'RColorBrewer', '
 pkg_map <- c('leaflet', 'maptools', 'rgdal', 'rgeos', 'sp', 'mapview', 'webshot')
 pkg_reporting <- c('flextable', 'officer')
 pkg_swmp <- c('SWMPr', 'SWMPrExtension', 'devtools')
+pkg_ttw_training <- c('rmarkdown', 'knitr', 'ggThemeAssist')
 
 
 # glue the sub-categories together into one vector of packages we need
-pkgs_needed <- c(pkg_data_wrangle, pkg_analysis, pkg_map, pkg_reporting, pkg_swmp)
+pkgs_needed <- c(pkg_data_wrangle, pkg_analysis, pkg_map, 
+                 pkg_reporting, pkg_swmp, pkg_ttw_training)
 
 
 # use installed.packages() to find out if the ones we want are installed
