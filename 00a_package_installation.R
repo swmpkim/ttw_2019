@@ -20,6 +20,7 @@ pkg_swmp <- c('SWMPr', 'SWMPrExtension', 'devtools')
 pkg_ttw_training <- c('rmarkdown', 'knitr', 'ggThemeAssist', 'clifro')
 
 
+
 install.packages(c(pkg_data_wrangle, pkg_analysis, pkg_map, 
                    pkg_reporting, pkg_swmp, pkg_ttw_training))
 
