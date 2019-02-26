@@ -17,9 +17,11 @@ pkg_analysis <- c('EnvStats', 'ggplot2', 'ggthemes', 'scales', 'RColorBrewer', '
 pkg_map <- c('leaflet', 'maptools', 'rgdal', 'rgeos', 'sp', 'mapview', 'webshot')
 pkg_reporting <- c('flextable', 'officer')
 pkg_swmp <- c('SWMPr', 'SWMPrExtension', 'devtools')
+pkg_ttw_training <- c('rmarkdown', 'knitr', 'ggThemeAssist', 'clifro')
 
 
-install.packages(c(pkg_data_wrangle, pkg_analysis, pkg_map, pkg_reporting, pkg_swmp))
+install.packages(c(pkg_data_wrangle, pkg_analysis, pkg_map, 
+                   pkg_reporting, pkg_swmp, pkg_ttw_training))
 
 
 # Load webshot package and install phantomjs
