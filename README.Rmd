@@ -28,18 +28,18 @@ Download the free Desktop version from [RStudio](https://www.rstudio.com/product
 
 ### 3.  R Packages  
 
-There are two `.r` files you need to download by right-clicking below. Once they're saved on your computer, open each in RStudio (first open RStudio, then from the toolbar select `file --> open file` and navigate to it).
+There are two `.r` files you need to run. They will be in a pre-workshop email. Save them to your computer (it doesn't matter where). Then, open each in RStudio (first open RStudio, then from the toolbar select `file --> open file` and navigate to it).
 
-The first one to run is:  `00a_package_installation.R`:  [click here](https://github.com/swmpkim/ttw_2019/blob/master/00a_package_installation.R); copy and paste that script into RStudio, and follow the instructions at the top.  
+The first one to run is:  `00a_package_installation.R`:  [click here](https://github.com/swmpkim/ttw_2019/blob/master/00a_package_installation.R); either use your downloaded file or copy and paste from that link into RStudio, and follow the instructions at the top.  
 
-After that has finished, run `00b_package_check.R` to make sure all packages installed properly;  [click here](https://github.com/swmpkim/ttw_2019/blob/master/00b_package_check.R); copy and paste that script into RStudio, and follow the instructions at the top.  
+After that has finished, run `00b_package_check.R` to make sure all packages installed properly;  [click here](https://github.com/swmpkim/ttw_2019/blob/master/00b_package_check.R); either use your downloaded file or copy and paste from that link into RStudio, and follow the instructions at the top.    
 
 ## Reserve-specific data  
 
 ### 1.  Status Report package
 
-Link to google drive? Where do these live for reserves?  
+The link for this will be emailed before the workshop. Please download the zip folder!    
 
 ### 2.  Raw sonde and/or MET files  
 
-Choose your own adventure on this - bring files straight off the EXOs, and bring a handful of WQ and MET files that have been emailed back to you when you upload data to the CDMO.
+Choose your own adventure on this - bring files straight off your EXOs, and bring a handful of `---_QC.csv` WQ and MET files that are automatically emailed when you upload raw data to the CDMO. Data from Grand Bay will be provided, but it's always more fun to work with your own!
