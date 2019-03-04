@@ -13,6 +13,7 @@
 
 ################################################################
 
+
 # list of packages we need to have installed for our workflow
 # original vectors copied out of status report script 00_initial_installation.R
 
@@ -29,24 +30,24 @@ pkgs_needed <- c(pkg_data_wrangle, pkg_analysis, pkg_map,
                  pkg_reporting, pkg_swmp, pkg_ttw_training)
 
 
-# now try loading each one and see if it works
 
+## now try loading each one and see if it works
 # set up an output vector
 pkg_result <- vector("logical", length(pkgs_needed))
-
 # loop through the needed packages
 for(i in seq_along(pkgs_needed)){
         # try to load the package and report whether it works
         # record that TRUE or FALSE in the pkg_result vector
         pkg_result[i] <- library(pkgs_needed[i], character.only = TRUE, quietly = TRUE, logical.return = TRUE)
-
 }
 
-# make the vector of missing packages:
+
+# make a vector of missing packages:
 # pkgs_needed that failed to load
 pkgs_missing <- pkgs_needed[!pkg_result]
 
 
+# print the results to the console
 if(length(pkgs_missing) == 0){
         message("\n \nAll required packages are installed and loading properly! \n \n")
 } else{ message("\n \nYou need to install the following packages: "); cat(pkgs_missing, sep="\n") }
