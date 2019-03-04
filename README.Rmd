@@ -36,10 +36,10 @@ After that has finished, run `00b_package_check.R` to make sure all packages ins
 
 ## Reserve-specific data  
 
-### 1.  Status Report package
+### 1.  Status Report package  
 
 The link for this will be emailed before the workshop. Please download the zip folder!    
 
 ### 2.  Raw sonde and/or MET files  
 
-Choose your own adventure on this - bring files straight off your EXOs, and bring a handful of `---_QC.csv` WQ and MET files that are automatically emailed when you upload raw data to the CDMO. Data from Grand Bay will be provided, but it's always more fun to work with your own!
+Choose your own adventure on this - bring Excel files straight off your EXOs, and bring a handful of `---_QC.csv` WQ and MET files that are automatically emailed when you upload raw data to the CDMO. Data from Grand Bay will be provided, but it's always more fun to work with your own!

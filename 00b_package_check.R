@@ -22,7 +22,7 @@ pkg_analysis <- c('EnvStats', 'ggplot2', 'ggthemes', 'scales', 'RColorBrewer', '
 pkg_map <- c('leaflet', 'maptools', 'rgdal', 'rgeos', 'sp', 'mapview', 'webshot')
 pkg_reporting <- c('flextable', 'officer')
 pkg_swmp <- c('SWMPr', 'SWMPrExtension', 'devtools')
-pkg_ttw_training <- c('rmarkdown', 'knitr', 'ggThemeAssist', 'clifro')
+pkg_ttw_training <- c('rmarkdown', 'knitr', 'ggThemeAssist', 'clifro', 'cowplot')
 
 
 # glue the sub-categories together into one vector of packages we need
