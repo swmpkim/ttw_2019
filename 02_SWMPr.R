@@ -166,10 +166,48 @@ na2 == na1
 # tell it they're part of a character string
 # but it can be done.
 
-# for example, we only want to keep 0 and 1 SDG (but not other 1s):
+# for example, if we only want to keep 0 and 1 SDG (but not other 1s):
 bhwq_qaqc3 <- qaqc(bhwq, qaqc_keep = c(0, "<1> \\[SDG\\]"))
 
 # compare pH NAs to the other ways we qc'd:
 sum(is.na(bhwq_qaqc$ph))    # only 0s kept
 sum(is.na(bhwq_qaqc2$ph))   # 0, all 1s, and 4 kept
 sum(is.na(bhwq_qaqc3$ph))   # 0 and ONLY 1 SDG
+
+
+# we can graphically see what's different between files:
+# first plot the layer with more data
+plot(ph ~ datetimestamp, data = bhwq_qaqc3, col = "red")
+# then add a layer of points
+points(ph ~ datetimestamp, data = bhwq_qaqc)
+
+# this sort of thing gets easier in ggplot2, which we'll discuss later
+
+
+
+
+### Challenge ----  
+
+## part 1:
+
+## make a graph to see which ph data was *not* kept by the default qaqc command:
+# first plot the points from the bigger data frame, bhwq
+# and give the graph some appropriate titles and axis labels (remember this???)
+----(ph ~ datetimestamp, ---- = bhwq, col = -----,
+     ---- = "pH at Bayou Heron",
+     ---- = "date/time",
+     ---- = "pH")
+# now add points from bhwq_qaqc, in a different color
+------(ph ~ datetimestamp, data = bhwq_qaqc, col = -----)
+
+
+## part 2:
+
+## do some similar exploration on the data you read in during the last challenge:
+
+# e.g. see how the number of NAs changes between your raw and qc'd data frames
+# using sum(is.na())
+
+# ....or make graphs of one parameter by another
+
+# ....just, have some fun with your data

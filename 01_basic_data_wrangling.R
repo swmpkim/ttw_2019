@@ -78,6 +78,34 @@ class(last_vector_for_now)
 ## yes, functions are also objects
 ## they take "arguments" and return another object
 
+# one of the most basic functions is "mean" -
+# so let's start by finding the mean of our numeric vector above:
+mean(my_first_vector)
+
+# min and max are similar
+min(my_first_vector)
+max(my_first_vector)
+
+
+# missing values are represented by NA
+one_more_vector <- c(1, 3, NA, 7, 9)
+# what kind of vector is this?
+# mean:
+mean(one_more_vector)
+
+
+
+
+# uh-oh. we have to tell it to ignore that NA.
+# to do that, use na.rm = TRUE
+mean(one_more_vector, na.rm = TRUE)
+
+# min and max work the same way
+min(one_more_vector)
+min(one_more_vector, na.rm = TRUE)
+
+
+
 
 ## working with data frames ----
 
@@ -112,6 +140,10 @@ tail(bhwq)
 # numerical summaries
 summary(bhwq)
 
+
+# how do we find mean salinity?
+mean(bhwq$sal, ------ = TRUE)
+# the dollar sign lets you specify a single column of a data frame
 
 
 
