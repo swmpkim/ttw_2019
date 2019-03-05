@@ -1,8 +1,85 @@
 ### Intro to scripts and working with data in R
 
+#  comments vs. code that will run
+
+### always be careful about:
+# capitalization
+# parentheses
+# spelling
+# commas
+
+
+
 ## load the libraries we need
+# good practice to do this at the top of the script
 library(lubridate)
 
+
+
+
+## objects and functions ----
+
+# "everything that exists [in R] is an object
+# everything that happens is a function call"
+# --John Chambers
+
+### types of objects:
+
+
+# atomic vectors: character, logical, numeric-double, numeric-integer
+
+## examples:
+
+my_first_vector <- c(1.2, 2.3, 3.4, 4.5)   
+# vocab: assignment operator; c()
+
+# what kind of vector did we make?
+class(my_first_vector)
+# is it numeric?
+is.numeric(my_first_vector)
+# what kind of number?
+is.double(my_first_vector)
+is.integer(my_first_vector)
+
+
+my_second_vector <- c(1, 2, 3, 4)
+# what kind of vector is this? double or integer?
+class(my_second_vector)
+
+
+my_third_vector <- c(1L, 2L, 3L, 4L)
+class(my_third_vector)
+
+
+
+another_vector <- c("a", "b", "c")
+class(another_vector)
+
+
+
+last_vector_for_now <- c("a", "b", 1, 2)
+## what to do with this?
+class(last_vector_for_now)
+# coercion
+
+
+
+# data frames
+## example: any data file we read in
+## seen by R as a collection of columns
+## and the columns can be used and manipulated as vectors
+
+
+
+# matrices
+# lists
+
+# functions
+## yes, functions are also objects
+## they take "arguments" and return another object
+
+
+## working with data frames ----
 
 ## read in a data file that was downloaded through
 ## the CDMO's AQS - Zip download system
@@ -13,6 +90,7 @@ bhwq <- read.csv("data/AQS_zip/gndbhwq2017.csv", stringsAsFactors = FALSE)
 
 
 ### Pop quiz: what kind of object is bhwq?
+class(bhwq)
 
 
 ## examine the data ----
