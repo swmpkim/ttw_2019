@@ -1,7 +1,7 @@
 ### Intro to SWMPr  
 
 # SWMPr is an R package developed by Marcus Beck
-# specifically to make certain taks involving SWMP data easier
+# specifically to make certain tasks involving SWMP data easier
 # this is where you can find lots of info:
 # https://github.com/fawda123/SWMPr#overview
 

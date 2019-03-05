@@ -11,7 +11,7 @@ avgs <- aggreswmp(bhwq_qaqc, by = "months")
 head(avgs)
 
 
-# the default argument is average
+# the default argument for aggreswmp is mean, with na.rm = TRUE
 # notice it looks like each month is represented by the first day of it
 # that's because R doesn't handle year-month alone very well
 
@@ -60,7 +60,7 @@ head(daily_rain)
 # we can use square brackets to subset data
 # [rows, columns]   or  [x, y]
 met_qc[1, ]   # selects the first row; all columns
-met_qc[ , 1]  # selects the all rows; first column
+met_qc[ , 1]  # selects all rows; first column
 
 # note: the above line gives the same results as:
 met_qc$datetimestamp
@@ -119,7 +119,8 @@ daily_rain$datetimestamp[which.max(daily_rain$totprcp)]  ## no comma here
 ### you do NOT have to memorize all these different ways to subset
 # but you should be aware that they exist
 
-
+# the dplyr package has easier ways to subset
+# we will get to that later  
 
 
 ### Challenge ----
@@ -132,41 +133,10 @@ daily_rain$datetimestamp[which.max(daily_rain$totprcp)]  ## no comma here
 weekly_rain <- aggreswmp(met_qc, by = "----", ---- = "totprcp", FUN = ----)
 
 # what is the highest weekly rainfall amount, and when did it occur?
+# just pull out the row of the data frame
+weekly_rain[ -----, -----]
 
 
-### potential application:
-
-## what if we want to subset the met_qc data frame 
-## to only that day of max rainfall
-
-
-## first problem:
-# datetimestamp gives us more than just a date
-
-## solution: make a new column, using the as.Date function
-met_qc$date <- as.Date(met_qc$datetimestamp)
-
-
-# now to subset.
-# it is very similar, but includes some extra notation because
-# we have to get very specific.
-
-# we want the ROWS of met_qc
-# where the date column matches
-# the datetimestamp identified as max rain in the daily_rain data frame
-
-rainiest_day <- met_qc[met_qc$date == daily_rain$datetimestamp[which.max(daily_rain$totprcp)], ]
-
-## if that's too crazy, you can assign that date to a variable
-date_i_want <- daily_rain$datetimestamp[which.max(daily_rain$totprcp)]
-
-rainiest_day <- met_qc[met_qc$date == date_i_want, ]    # much more readable
-
-## we could subset one of our water quality data frames the same way
-## (after making a date column, of course)
-
-# the dplyr package has easier ways to subset
-# we will get to that later   
 
 
 ##### let's review a bit
