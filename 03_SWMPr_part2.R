@@ -145,6 +145,9 @@ weekly_rain[ -----, -----]
 ### importing data
 # read.csv()
 # SWMPr::import_local()
+# -- something we haven't gone over yet: 
+# -- SWMPrExtension::import_local_nut() lets you choose between 
+# -- grab and diel sample types
 
 
 
