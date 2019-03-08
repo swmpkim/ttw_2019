@@ -215,6 +215,11 @@ plot(--- ~ ---, data = bhwq)
 # we need a date-time field to be in a format called POSIXct
 # there are a few ways to do this
 
+# the SWMPr package takes care of it for us, but if you're not using
+# that package, or have this in other data, you need to know these steps
+# and the lubridate package helps with more than just POSIXct
+
+
 # I'm going to pull out the first 10 rows of the DateTimeStamp column so we can play with different methods:
 datetime <- bhwq$DateTimeStamp[1:10]
 # the $ specifies a column from our data frame

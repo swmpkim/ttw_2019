@@ -169,6 +169,10 @@ na2 > na1
 na2 == na1
 
 
+# or NOT equal to
+na2 != na1
+
+
 
 
 # keeping things gets tougher when you want to keep certain combinations
