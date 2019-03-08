@@ -28,9 +28,11 @@ library(lubridate)
 
 # atomic vectors: character, logical, numeric-double, numeric-integer
 
+
+
 ## examples:
 
-my_first_vector <- c(1.2, 2.3, 3.4, 4.5)   
+my_first_vector <- c(1, 1.5, 2, 2.5)   
 # vocab: assignment operator; c()
 
 # what kind of vector did we make?
@@ -42,9 +44,12 @@ is.double(my_first_vector)
 is.integer(my_first_vector)
 
 
+
+
 my_second_vector <- c(1, 2, 3, 4)
 # what kind of vector is this? double or integer?
 class(my_second_vector)
+
 
 
 my_third_vector <- c(1L, 2L, 3L, 4L)
@@ -52,15 +57,35 @@ class(my_third_vector)
 
 
 
-another_vector <- c("a", "b", "c")
+another_vector <- c("a", "b", "c", "d")
 class(another_vector)
 
 
 
 last_vector_for_now <- c("a", "b", 1, 2)
 ## what to do with this?
+
 class(last_vector_for_now)
 # coercion
+
+
+
+
+## subset a vector:
+# just one value:
+another_vector[2]
+
+# everything *but* one value:
+another_vector[-2]
+
+
+# multiple values
+another_vector[2:4]
+another_vector[c(2, 4)]
+
+
+
+
 
 
 
@@ -89,9 +114,13 @@ max(my_first_vector)
 
 # missing values are represented by NA
 one_more_vector <- c(1, 3, NA, 7, 9)
+
 # what kind of vector is this?
+class(one_more_vector)
+
 # mean:
 mean(one_more_vector)
+
 
 
 
@@ -103,6 +132,19 @@ mean(one_more_vector, na.rm = TRUE)
 # min and max work the same way
 min(one_more_vector)
 min(one_more_vector, na.rm = TRUE)
+
+
+
+
+#### takeaways so far:
+# assignment operator,  <-
+# objects are things, and functions are actions
+# what a vector represents
+# how to tell what type of vector you're looking at
+# how to subset a vector
+# you can do things (math) to vectors
+# NAs matter
+
 
 
 
@@ -141,8 +183,10 @@ tail(bhwq)
 summary(bhwq)
 
 
-# how do we find mean salinity?
-mean(bhwq$sal, ------ = TRUE)
+
+
+#### how do we find mean salinity?
+mean(bhwq$Sal, ------ = TRUE)
 # the dollar sign lets you specify a single column of a data frame
 
 
@@ -154,9 +198,12 @@ plot(SpCond ~ Sal, data = bhwq)
 
 # notice the format of that command was a formula: y ~ x
 
-# you make a graph of something that's interesting
+
+
+#### you make a graph of something that's interesting
 # (don't use datetimestamp yet - it's still a character so R will freak out)
 plot(--- ~ ---, data = bhwq)
+
 # hint: if you don't remember exactly how a column name is specified,
 # use names() on the data frame
 
@@ -172,10 +219,11 @@ plot(--- ~ ---, data = bhwq)
 datetime <- bhwq$DateTimeStamp[1:10]
 # the $ specifies a column from our data frame
 # the square brackets specify the rows
-# square brackets are useful to subset in a LOT of contexts; we'll cover more later
 
 
-### Pop quiz: what kind of object is datetime?
+
+### Pop quiz: what kind of object is datetime right now?
+
 
 
 # the first way to change its format is to use as.POSIXct()
@@ -185,13 +233,23 @@ datetime <- bhwq$DateTimeStamp[1:10]
 as.POSIXct(datetime)
 
 
-# Nope! Pull up the help file so we know how to use this command:
+# Nope! We did, however, get output. The WRONG output.
+# It is always a good idea to make sure a command gives you the type of output you expect!
+
+
+
+# Pull up the help file so we know how to use this command:
 ?as.POSIXct
+
+
+
 
 
 # now specify the exact format that the column is already using
 # and specify a timezone
 as.POSIXct(datetime, format = "%m/%d/%Y %H:%M", tz = "America/Regina")
+
+
 
 
 ## easier way to deal with date-time fields ----
@@ -213,7 +271,7 @@ str(bhwq$DateTimeStamp)
 plot(Sal ~ DateTimeStamp, data = bhwq)
 
 
-## if you hate that x-axis label, you can use axis.POSIXct
+## if you hate the labels on the x-axis, you can use axis.POSIXct
 # first make the plot, telling it not to include an x-axis:
 plot(Sal ~ DateTimeStamp, data = bhwq, xaxt = "n")
 # then call axis.POSIXct and specify the format you want the labels to be in:

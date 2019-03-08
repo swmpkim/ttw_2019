@@ -26,7 +26,7 @@ data_path <- "data/AQS_zip"
 
 # now read in all files that have what we specify
 # this will glue together multiple years
-bhwq <- import_local(data_path, "gndbhwq")
+bhwq <- import_local(data_path, "gndbhwq", trace = TRUE)
 
 
 ## examine the data  
@@ -57,6 +57,16 @@ qaqcchk(bhwq)
 
 # could use unique() to check out a single column:
 unique(bhwq$f_ph)
+# and use the table() function to see counts:
+table(unique(bhwq$f_ph))
+# when you see a long command like this, and want to understand it,
+# start from the inside and work your way out -
+# so you're doing one piece at a time
+# e.g. highlight only "bhwq$f_ph" and run it
+# then highlight "unique(bhwq$ph)" and run it
+# and finally, run the whole thing
+
+
 
 # run the qaqc function, making a new data frame:
 bhwq_qaqc <- qaqc(bhwq)
@@ -94,6 +104,7 @@ names(bhwq_qaqc)
 # you can make it keep others using qaqc_keep:
 # (assigning this to a different data frame so we can compare them later)
 bhwq_qaqc2 <- qaqc(bhwq, qaqc_keep = c(0, 1, 4))
+
 
 
 

@@ -53,6 +53,8 @@ plot_wind(met_qc, years = 2016:2018, type = "month")
 # or by season
 plot_wind(met_qc, years = 2016:2018, type = "season")
 # or others; look in the help file
+?plot_wind
+
 
 # you make one!
 ------(---)
@@ -73,43 +75,69 @@ plot_quants(met_qc, paramtoplot = "atemp",
 
 # SWMPrExtension plots
 
+##### to work with ggplot2 v.3.x:
+# Most legends will need to have the legend spacing changed from theme(legend.spacing.x = unit(-6, 'pt')) to theme(legend.spacing.x = unit(6, 'pt')).
+# 
+# historical_range will need theme(legend.spacing.x = unit(2, 'pt'))
+
 ###########################################
 
+
+# set up these legend themes so they're easier to add:
+# (these graphics are built in ggplot,
+# which lets you add to a plot layer by layer)
+theme_better <- theme(legend.spacing.x = unit(6, 'pt'))
+theme_better_hist <- theme(legend.spacing.x = unit(2, 'pt'))
+
+
+
+
 ## historical range plots ----
+
 
 # using defaults:
 historical_range(met_qc, param = "atemp")
 
+
+# adding in our "better legend" layer
+historical_range(met_qc, param = "atemp") +
+        theme_better_hist
+
 # using a different historical range:
 historical_range(met_qc, param = "atemp",
                  hist_rng = 2016:2017,
-                 target_yr = 2018)
+                 target_yr = 2018) +
+        theme_better_hist
 
 
 # another option is to include a horizontal line for some threshold:
 historical_range(met_qc, param = "atemp",
                  hist_rng = 2016:2017,
                  target_yr = 2018,
-                 criteria = 25)
+                 criteria = 25) +
+        theme_better_hist
 
-# did you notice that legend? how do we fix it?
+# did you notice that 'WQ Thresholde' in the legend? how do we fix it?
 ?historical_range
 
 historical_range(met_qc, param = "atemp",
                  hist_rng = 2016:2017,
                  target_yr = 2018,
                  criteria = 25,
-                 ------ = "MET threshold")
+                 ----- = "MET threshold") +
+        theme_better_hist
 
 
 # by day instead of by month
 historical_daily_range(met_qc, param = "atemp",
                        hist_rng = 2016:2017,
-                       target_yr = 2018)
+                       target_yr = 2018) +
+        theme_better
 
 
 ## your turn: make something fun using one of these functions
----------(------, param = -----)
+---------(------, param = -----) +
+        theme_better
 
 
 
@@ -117,15 +145,18 @@ historical_daily_range(met_qc, param = "atemp",
 
 ## boxplots ----
 
-raw_boxplot(met_qc, "atemp")
-seasonal_boxplot(met_qc, "atemp")
+raw_boxplot(met_qc, "atemp") +
+        theme_better
+seasonal_boxplot(met_qc, "atemp") +
+        theme_better
 
 
 # notice those warnings that tell us we haven't specified certain things
 # so let's look in the help file
 ?raw_boxplot
 # and specify something here:
-raw_boxplot(met_qc, "atemp", target_yr = 2018)
+raw_boxplot(met_qc, "atemp", target_yr = 2018) +
+        theme_better
 # what did that do?
 
 
@@ -138,13 +169,15 @@ raw_boxplot(met_qc, "atemp", target_yr = 2018)
 
 seasonal_boxplot(met_qc, "atemp", 
                  hist_rng = 2016:2017,
-                 target_yr = 2018)
+                 target_yr = 2018) +
+        theme_better
 
 
 seasonal_boxplot(met_qc, "atemp", 
                  hist_rng = 2016:2017,
                  target_yr = 2018,
-                 plot_title = TRUE) 
+                 plot_title = TRUE) +
+        theme_better
 
 
 ##### Some things to notice about the SWMPrExtension plots
@@ -171,7 +204,8 @@ seasonal_boxplot(met_qc, "atemp",
                  plot_title = TRUE)  + 
         labs(title = "Air Temp at Crooked Bayou",
              subtitle = "2018, compared to 2016 and 2017",
-             x = "Month")
+             x = "Month") +
+        theme_better
 
 
 # highlight the seasonal_boxplot call,
@@ -195,7 +229,8 @@ atemp_plot <- seasonal_boxplot(met_qc, "atemp",
         theme(plot.subtitle = element_text(hjust = 0.5), 
               legend.position = "bottom") +
         labs(title = "Air Temp at Crooked Bayou", 
-             x = "Month", subtitle = "2018, compared to 2016 and 2017")
+             x = "Month", subtitle = "2018, compared to 2016 and 2017") +
+        theme_better
 
 # another great function from ggplot2 is ggsave()
 ggsave(filename = "atemp_plot.png", plot = atemp_plot)
@@ -216,14 +251,15 @@ wtemp_plot <- seasonal_boxplot(bhwq_qaqc, "temp",
         theme(plot.subtitle = element_text(hjust = 0.5), 
               legend.position = "bottom") +
         labs(title = "Water Temp at Bayou Heron", 
-             x = "Month", subtitle = "2018, compared to 2016 and 2017")
+             x = "Month", subtitle = "2018, compared to 2016 and 2017") +
+        theme_better
 
 # look at it
 wtemp_plot
 
 
 # save it
-ggsave(filename = ------, plot = -----)
+ggsave(filename = "output/------", plot = -----)
 
 
 # let's put them both together, using cowplot
@@ -245,7 +281,7 @@ plot_grid(atemp_plot, wtemp_plot, ncol = 1, align = "hv")
 
 
 
-# about to get very tired of this, so assign it to an object
+# about to get very tired of this typing, so assign it to an object
 gridded_temps <- plot_grid(atemp_plot, wtemp_plot, ncol = 1, align = "hv")
 
 
