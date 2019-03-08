@@ -8,6 +8,8 @@
 # especially if you want to use dplyr functions on swmpr objects
 # (they lose their swmpr identity and need to be turned back into it)
 
+## swmpr subsetting functions!!!
+
 ## clean up 05_more_SWMPrExtension_functionality
 
 # don't forget to talk about the history pane
