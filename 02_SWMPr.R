@@ -22,6 +22,8 @@ library(SWMPr)
 
 # first tell R where to look (this can be different
 # from your working directory, and may need to start with C://)
+##### NOTICE that you should only use forward slashes (/) in file paths in R
+# if you copy and paste from windows explorer, it will contain backslashes (\)
 data_path <- "data/AQS_zip"
 
 # now read in all files that have what we specify
@@ -97,7 +99,7 @@ names(bhwq_qaqc)
 
 ## f_ columns are gone
 ## "bad" data was replaced with NAs
-
+## trailing white spaces have been removed
 
 
 ## The default for the qaqc() function is to only keep 0 flags
@@ -121,6 +123,16 @@ bhwq_qaqc2 <- qaqc(bhwq, qaqc_keep = c(0, 1, 4))
 # run qaqc step, keeping 0, 1, and 4 flags
 ----_qaqc2 <- ----(-----, ----- = c(0, 1, 4))
 
+## what is the first datetimestamp in that file?
+## what is the 15th datetimestamp in the file?
+## what is the last?
+
+
+
+# hint: there are several ways to look at these, but min() is one way to look at the first one
+# square bracket subsetting will help you with another
+
+
 
 
 ## we're going to use the Bayou Heron data again here, but
@@ -140,10 +152,15 @@ is.na(bhwq_qaqc$sal)
 
 
 
+
+
+
 ## fortunately, R "sees" TRUE as 1 and FALSE as 0
 ## so we can add up how many TRUEs there are,
 ## using the sum() function:
 sum(is.na(bhwq_qaqc$sal))
+
+
 
 
 # getting tired of typing that all out, so I'm going to assign it to an object:
@@ -190,13 +207,34 @@ sum(is.na(bhwq_qaqc2$ph))   # 0, all 1s, and 4 kept
 sum(is.na(bhwq_qaqc3$ph))   # 0 and ONLY 1 SDG
 
 
-# we can graphically see what's different between files:
-# first plot the layer with more data
-plot(ph ~ datetimestamp, data = bhwq_qaqc3, col = "red")
-# then add a layer of points
-points(ph ~ datetimestamp, data = bhwq_qaqc)
+# those seem like a lot of NAs
+# we're looking at 5 years of data; how much is that?
+nrow(bhwq_qaqc)
+#or
+length(bhwq_qaqc$ph)
 
-# this sort of thing gets easier in ggplot2, which we'll discuss later
+
+
+# total missing:
+sum(is.na(bhwq_qaqc$ph)) / nrow(bhwq_qaqc)
+
+
+
+
+# we can graphically see what's different between files:
+ggplot() +
+        geom_point(data = bhwq_qaqc, aes(x = datetimestamp, y = ph, col = "only 0 kept")) +
+        geom_point(data = bhwq_qaqc3, aes(x = datetimestamp, y = ph, col = "0 and 1 SDG kept")) +
+        theme_minimal()
+
+
+## just kidding; one plotted over the other one
+## order of layers matters, so put the bigger dataset first
+ggplot() +
+        geom_point(data = bhwq_qaqc3, aes(x = datetimestamp, y = ph, col = "0 and 1 SDG kept")) +
+        geom_point(data = bhwq_qaqc, aes(x = datetimestamp, y = ph, col = "only 0 kept")) +
+        theme_minimal()
+
 
 
 
@@ -208,12 +246,16 @@ points(ph ~ datetimestamp, data = bhwq_qaqc)
 ## make a graph to see which ph data was *not* kept by the default qaqc command:
 # first plot the points from the bigger data frame, bhwq
 # and give the graph some appropriate titles and axis labels (remember this???)
-----(ph ~ datetimestamp, ---- = bhwq, col = -----,
-     ---- = "pH at Bayou Heron",
-     ---- = "date/time",
-     ---- = "pH")
-# now add points from bhwq_qaqc, in a different color
-------(ph ~ datetimestamp, data = bhwq_qaqc, col = -----)
+
+-----() +
+        geom_-----(---- = bhwq, ---(x = datetimestamp, y = ph, col = "all data")) +
+        geom_-----(---- = bhwq_qaqc, ---(x = datetimestamp, y = ph, col = "qc")) +
+        labs(--- = "pH at Bayou Heron",
+             --- = "Date/Time",
+             --- = "pH")
+
+
+# hint: use ?labs if you need a reminder of how to add titles and labels
 
 
 ## part 2:

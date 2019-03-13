@@ -1,8 +1,5 @@
 ## dplyr: select, filter, group_by, summarize
 
-## ggplot2
-# especially how to put multiple stations on a plot
-# maybe i should do this early, like before SWMPr
 
 ## swmpr() function to turn non-swmpr data into a swmpr object
 # especially if you want to use dplyr functions on swmpr objects

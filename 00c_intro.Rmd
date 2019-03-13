@@ -1,0 +1,103 @@
+---
+title: "R for the SWMP Community \nTTW2019"
+author: "Kim Cressman"
+date: "March 15, 2019"
+output: 
+    ioslides_presentation:
+        incremental: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Welcome  
+
+**Structure of this workshop:**  
+
++  colored sticky notes! Put on your computer to signal:   
+    +  blue: "I'm finished with the task you gave me"  
+    +  orange: "I need some help"  
++  scripts are provided  
+    +  will be working off the code from these scripts  
+    +  "Challenges": skeleton code is provided, and you fill in the blanks
++  data is provided too: `data` folder  
+    +  we will be working out of the `AQS_zip` subfolder  
+    
+## Pause for copying data  
+
+please copy the downloaded data you brought into the `data/user_download` subfolder  
+
+**Put the blue sticky note on your computer when you have finished copying those data files**
+
+  
+
+## Why R?  
+
++  Free!  
++  Available on all operating systems  
++  Useful for:  
+    +  Statistics  
+    +  Graphics  
+    +  Reproducibility  
+        +  scripts to re-run your analyses  
+        +  R Markdown to generate reports  
++  Community  
+
+  
+    
+## Getting familiar with RStudio  
+
++  open the "ttw_2019.Rproj" file  
++  different panes: script/source; console; environment/history; files/plots/help  
++  what is a **working directory**  ... 
+    +  how to set a default wd for Rstudio to look in  
+    +  how to figure out what it actually *is* in a given moment  
+    +  how to avoid the hassle by using RStudio Projects  
++  options menu: never save workspace on exit; colors
+
+
+
+## Some vocabulary  
+
++  Base R / Tidyverse  
++  Packages  
+    +  installed *__once__* with **`install.packages("package_name")`**  
+    +  loaded *__every time you need them__* with **`library(package_name)`** or *`require(package_name)`*  
+    +  **`library`** is better than **`require`**  (https://yihui.name/en/2014/07/library-vs-require/)  
++  Data Frames  
++  Vectors  
++  Objects  
++  Functions  
+
+## Common pain points  
+
+R only knows what you tell it. It cannot interpret intentions. If you get an error, the first things to check are:  
+
++  Capitalization  
++  Parentheses  
++  Quotation Marks  
++  Is the package loaded?  
++  Did you specify the full path to your object?  
+
+## Good practices for scripts  
+
+1.  Use them!!!  
+2.  Load all libraries (packages) at the top of your script.  
+3.  If you're going to `setwd()`, do it at the top of the script.  
+4.  Name things well:  
+    +  descriptive  
+    +  no spaces  
+    +  consistent formatting (`camelCase` / `snake_case`)
+5.  Restart R every once in a while to make sure everything you've done is captured. If it's not, this is how you'll figure it out - while it's fresh enough to reconstruct.  
+
+
+## Let's get to it  
+
++  Reminder: the `ttw_2019.Rproj` file should be open, which means RStudio should be open too  
++  We will start with `01_basic_data_wrangling.R`  
++  Options for opening a script:
+    +  File menu --> Open File  
+    +  File folder icon button up top  
+    +  Files pane  
++  **Any questions so far?**

@@ -13,6 +13,7 @@
 ## load the libraries we need
 # good practice to do this at the top of the script
 library(lubridate)
+library(ggplot2)
 
 
 
@@ -190,6 +191,11 @@ mean(bhwq$Sal, ------ = TRUE)
 # the dollar sign lets you specify a single column of a data frame
 
 
+### Challenge ----
+
+# read in the file gndbcwq2017.csv:
+bcwq <- ------(------, stringsAsFactors = FALSE)
+
 
 ## make a graph ----
 
@@ -272,6 +278,10 @@ bhwq$DateTimeStamp <- mdy_hm(bhwq$DateTimeStamp, tz = "America/Regina")
 str(bhwq$DateTimeStamp)
 
 
+### now do this for bcwq too:
+bcwq$DateTimeStamp <- ------(---$------, tz = "America/Regina")
+
+
 ## make a time-series graph ----
 plot(Sal ~ DateTimeStamp, data = bhwq)
 
@@ -324,3 +334,144 @@ plot(Sal ~ DateTimeStamp, data = ----,
 ### Remember to put the blue sticky-note on your laptop when you finish!
 ### And use the orange if you need help.
 
+
+### Brief intro to ggplot2 ----
+
+# gg = "grammar of graphics"
+# this package is part of the tidyverse
+# and is meant to provide a consistent, coherent framework
+# for graphing
+
+
+# graphs are built in layers, additively using "+"
+
+ggplot() +
+        geom_point(data = bhwq, aes(x = DateTimeStamp, y = Sal))
+
+
+# anything in the top layer gets carried through the plot; 
+# this gives us the same graph:
+ggplot(data = bhwq, aes(x = DateTimeStamp, y = Sal)) +
+        geom_point()
+
+
+# that can be useful for adding multiple layers for one set of data points:
+ggplot(data = bhwq, aes(x = DateTimeStamp, y = Sal)) +
+        geom_point() +
+        geom_line(col = "blue") +
+        geom_smooth(col = "red")  # geom_smooth can be used for many types of smoothing
+
+
+# I typically leave the top line blank and specify with each layer
+# this helps if you want to graph something from multiple stations
+ggplot() +
+        geom_point(data = bhwq, aes(x = DateTimeStamp, y = Sal), col = "blue") +
+        geom_point(data = bcwq, aes(x = DateTimeStamp, y = Sal), col = "red")
+
+
+## geom_line gives you lines instead of points
+## can make points and lines more transparent using "alpha":
+ggplot() +
+        geom_line(data = bhwq, aes(x = DateTimeStamp, y = Sal), col = "blue") +
+        geom_line(data = bcwq, aes(x = DateTimeStamp, y = Sal), col = "red", alpha = 0.5)
+
+
+
+## notice there's no legend
+# we can specify a characteristic of the data inside aes()
+# (we want to use the site name as the difference between color values)
+ggplot() +
+        geom_line(data = bhwq, aes(x = DateTimeStamp, y = Sal, col = "Bayou Heron")) +
+        geom_line(data = bcwq, aes(x = DateTimeStamp, y = Sal, col = "Bayou Cumbest"), alpha = 0.5)
+
+
+
+
+### Challenge ----
+# make a ggplot comparing pH at Bayou Heron and Bayou Cumbest
+------ +
+        -------(---- = bhwq, ---(x = DateTimeStamp, y = pH, col = "Bayou Heron")) +
+        -------(---- = bcwq, ---(x = DateTimeStamp, y = pH, col = "Bayou Cumbest"))
+
+########
+
+
+
+
+## use scale_color_manual / scale_fill_manual and friends
+# (see "data visualization" cheatsheet)
+# to force the colors to be what you want
+ggplot() +
+        geom_line(data = bhwq, 
+                  aes(x = DateTimeStamp, y = Sal, col = "Bayou Heron")) +
+        geom_line(data = bcwq, 
+                  aes(x = DateTimeStamp, y = Sal, col = "Bayou Cumbest"), 
+                  alpha = 0.5) +
+        scale_color_manual(values = c("blue", "red"),
+                          name = "Station",
+                          limits = c("Bayou Heron", "Bayou Cumbest"))
+
+
+
+# another nice thing about ggplot2 is that you can save the 
+# it as an object, and then add other layers to it:
+p <- ggplot() +
+        geom_line(data = bhwq, 
+                  aes(x = DateTimeStamp, y = Sal, col = "Bayou Heron")) +
+        geom_line(data = bcwq, 
+                  aes(x = DateTimeStamp, y = Sal, col = "Bayou Cumbest"), 
+                  alpha = 0.5)
+
+
+p
+
+
+
+p + scale_color_manual(values = c("blue", "red"),
+                       name = "Station",
+                       limits = c("Bayou Heron", "Bayou Cumbest"))
+
+
+# write over "p":
+p <- p + scale_color_manual(values = c("blue", "red"),
+                            name = "Station",
+                            limits = c("Bayou Heron", "Bayou Cumbest"))
+
+
+p
+
+
+
+## add some titles and axis labels:
+p <- p + 
+        labs(title = "Salinity at Grand Bay",
+             subtitle = "in 2017",
+             x = "Date",
+             y = "Salinity (psu")
+
+
+## get rid of the ugly gray background
+# ggplot2 has lots of themes you can explore
+p + theme_bw()
+
+p + theme_minimal()
+
+p + theme_dark()
+
+
+# you can also make your own theme
+## ggThemeAssist is a helpful package that provides
+# a point and click interface to build your plot;
+# then it returns the code for you
+
+## highlight code for a ggplot
+# then up top in the "Addins" pull down menu,
+# select "ggplot Theme Assistant"
+# and make the desired modifications
+p
+
+# when you want to make the same plot, you can use the same code
+
+
+## save with "ggsave":
+ggsave("output/sal2017.png")
