@@ -26,9 +26,28 @@ library(SWMPr)
 # if you copy and paste from windows explorer, it will contain backslashes (\)
 data_path <- "data/AQS_zip"
 
+
+
+## note, import_local ONLY works with files downloaded from the 
+# AQS Zip portal of the CDMO
+
+## You can convert other downloaded files into SWMPr format
+######### using the swmpr() function
+# but you'll have to read it in and append everything together FIRST
+# look at base::rbind and dplyr::bind_rows - these functions can help
+
+
+
+
 # now read in all files that have what we specify
 # this will glue together multiple years
 bhwq <- import_local(data_path, "gndbhwq", trace = TRUE)
+
+
+# import_local() works on nutriend data, but doesn't let you 
+# choose between grab and diel samples
+# if you want to select one format or the other, use
+######## SWMPrExtension::import_local_nut()
 
 
 ## examine the data  

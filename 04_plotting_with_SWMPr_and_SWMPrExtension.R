@@ -5,8 +5,13 @@ library(SWMPrExtension)
 
 
 # assuming wq and met data are still loaded up
-# if not, read some in again with import_local
-# and run the qaqc step
+# if not, uncomment and run the following lines
+
+# data_path <- "data/AQS_zip"
+# bhwq <- import_local(data_path, "gndbhwq", trace = TRUE)
+# bhwq_qaqc <- qaqc(bhwq)
+# met_data <- import_local(data_path, "gndcrmet", trace = TRUE)
+# met_qc <- qaqc(met_data, qaqc_keep = c(0, 1, 4, 5))
 
 
 ## SWMPr does have some additional non-plotting functions that you should check out:
@@ -86,6 +91,10 @@ plot_quants(met_qc, paramtoplot = "atemp",
 # + theme(legend.spacing.x = unit(2, 'pt'))
 # to historical range plots
 
+# just going to set these up now:
+legend_fixed <- theme(legend.spacing.x = unit(6, 'pt'))
+legend_hist_fixed <- theme(legend.spacing.x = unit(2, 'pt'))
+
 ###########################################
 
 
@@ -100,7 +109,8 @@ historical_range(met_qc, param = "atemp")
 # using a different historical range:
 historical_range(met_qc, param = "atemp",
                  hist_rng = 2016:2017,
-                 target_yr = 2018) 
+                 target_yr = 2018) +
+        legend_fixed
 
 
 # another option is to include a horizontal line for some threshold:
@@ -110,8 +120,11 @@ historical_range(met_qc, param = "atemp",
                  criteria = 25) 
 
 
+
 # did you notice that 'WQ Threshold' in the legend? how do we fix it?
 ?historical_range
+
+
 
 historical_range(met_qc, param = "atemp",
                  hist_rng = 2016:2017,
@@ -124,7 +137,8 @@ historical_range(met_qc, param = "atemp",
 # by day instead of by month
 historical_daily_range(met_qc, param = "atemp",
                        hist_rng = 2016:2017,
-                       target_yr = 2018) 
+                       target_yr = 2018) +
+        legend_fixed
 
 
 
@@ -175,14 +189,15 @@ seasonal_boxplot(met_qc, "atemp",
 ## that the plot was in
 
 ## they are based on ggplot2, so
-## to fiddle with formatting, it is useful to know something about ggplot2
+## to fiddle with formatting, we can use ggplot2 commands
 
-# so let's talk a bit about options
-# ggplot2 and SWMPr/SWMPrExtension ----
 
-# ggplot2 builds graphs using layers
-# we will go into more detail a bit later, but will start with the easy stuff:
-# adding to already-made SWMPrExtension plots
+
+
+### ggplot2 and SWMPr/SWMPrExtension ----
+
+# Recall that ggplot2 builds graphs using layers
+# and we can add to already-made SWMPrExtension plots
 
 # let's give the seasonal boxplot a different title, and an x-axis label
 
@@ -190,6 +205,7 @@ seasonal_boxplot(met_qc, "atemp",
                  hist_rng = 2016:2017,
                  target_yr = 2018,
                  plot_title = TRUE)  + 
+        legend_fixed +
         labs(title = "Air Temp at Crooked Bayou",
              subtitle = "2018, compared to 2016 and 2017",
              x = "Month") 
@@ -213,13 +229,14 @@ atemp_plot <- seasonal_boxplot(met_qc, "atemp",
                               hist_rng = 2016:2017,
                               target_yr = 2018,
                               plot_title = TRUE)  + 
+        legend_fixed +
         theme(plot.subtitle = element_text(hjust = 0.5), 
               legend.position = "bottom") +
         labs(title = "Air Temp at Crooked Bayou", 
              x = "Month", subtitle = "2018, compared to 2016 and 2017") 
 
 
-# another great function from ggplot2 is ggsave()
+# Remember we can save with ggsave()
 ggsave(filename = "atemp_plot.png", plot = atemp_plot)
 
 
@@ -235,6 +252,7 @@ wtemp_plot <- seasonal_boxplot(bhwq_qaqc, "temp",
                                hist_rng = 2016:2017,
                                target_yr = 2018,
                                plot_title = TRUE)  + 
+        legend_fixed +
         theme(plot.subtitle = element_text(hjust = 0.5), 
               legend.position = "bottom") +
         labs(title = "Water Temp at Bayou Heron", 
