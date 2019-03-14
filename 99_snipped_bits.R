@@ -39,3 +39,25 @@ rainiest_day <- met_qc[met_qc$date == date_i_want, ]    # much more readable
 
 ##############################################################################
 ##############################################################################
+
+
+### originally after subsetting in 03_SWMPr_part2:
+
+
+# if all we really want is the date, and we don't care about the total,
+# we can subset this way:
+daily_rain[row_index, 1]
+
+# or
+daily_rain[row_index, "datetimestamp"]
+
+# or
+daily_rain$datetimestamp[row_index]  ## no comma here
+
+# notice these are simplifying from a data frame to a vector of 1
+# if we want to keep the data frame structure, 
+# we have to include drop = FALSE:
+daily_rain[row_index, 1, drop = FALSE]
+
+##############################################################################
+##############################################################################
