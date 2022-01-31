@@ -5,13 +5,13 @@
 # this is where you can find lots of info:
 # https://github.com/fawda123/SWMPr#overview
 
-# Additionally, links to past workshops are:
+# Additionally, links to past workshops are online at https://oceantimeseries.net/swmprats/ 
 # Materials for the 2015 workshop are here: 
-# NOT ONLINE AT THE MOMENT (1/31/2022)
+# https://oceantimeseries.net/swmprats/workshop-2015
 
 # Materials for the 2016 workshop are here, 
 # as are recordings of the training sessions:
-# NOT ONLINE AT THE MOMENT (1/31/2022)
+# https://oceantimeseries.net/swmprats/workshop-2016
 
 
 ## load libraries  
