@@ -5,13 +5,13 @@
 # this is where you can find lots of info:
 # https://github.com/fawda123/SWMPr#overview
 
-# Additionally, links to past workshops are on swmprats.net
+# Additionally, links to past workshops are:
 # Materials for the 2015 workshop are here: 
-# http://swmprats.net/workshop-2015
+# NOT ONLINE AT THE MOMENT (1/31/2022)
 
 # Materials for the 2016 workshop are here, 
 # as are recordings of the training sessions:
-# http://swmprats.net/2016-workshop
+# NOT ONLINE AT THE MOMENT (1/31/2022)
 
 
 ## load libraries  
